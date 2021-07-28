@@ -13,20 +13,16 @@ import br.com.samuel.cursomc.domain.Categoria;
 import br.com.samuel.cursomc.services.CategoriaService;
 
 @RestController
-@RequestMapping(value="/categorias")
+@RequestMapping(value = "/categorias")
 public class CategoriaResource {
-	
+
 	@Autowired
-	private CategoriaService  service;
-	
-	
-	
-	@RequestMapping(value = "/{id}",method = RequestMethod.GET)
-	public ResponseEntity<Optional<Categoria>> find(@PathVariable Integer id){
-		Optional<Categoria>  categoria = service.buscar(id);
-		
-		return ResponseEntity.ok(categoria);
-		
-		
+	private CategoriaService service;
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Optional<Categoria>> find(@PathVariable Integer id) {
+		Optional<Categoria> categoria = service.buscar(id);
+		return ResponseEntity.ok().body(categoria);
+
 	}
 }
