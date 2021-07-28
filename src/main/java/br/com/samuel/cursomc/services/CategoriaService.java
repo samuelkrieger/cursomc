@@ -16,8 +16,9 @@ public class CategoriaService {
 
 	public Optional<Categoria> buscar(Integer id) {
 		Optional<Categoria> obj = repository.findById(id);
-		if(obj ==null) {
-			throw new ObjectNotFoundException("objeto nao encontrado"+id);
+	
+		if(obj.isEmpty()) {
+			throw new ObjectNotFoundException("objeto nao encontrado : " +id);
 		}
 		
 		return obj;
